@@ -1,3 +1,8 @@
+"""
+This module contains settings for the application.
+"""
+
+
 class Settings:
     """
     This class stores game settings

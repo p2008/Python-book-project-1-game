@@ -1,3 +1,6 @@
+"""
+This is the main module of the application.
+"""
 import pygame
 
 import aliens.game_functions as gf
