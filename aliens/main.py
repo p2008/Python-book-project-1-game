@@ -1,7 +1,8 @@
-import sys
-
 import pygame
+
+import aliens.game_functions as gf
 from aliens.settings import Settings
+from aliens.ship.base import BaseShip
 
 
 def run_game():
@@ -11,18 +12,14 @@ def run_game():
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Alien invasion")
 
+    # Initiate spaceship
+    ship = BaseShip(screen=screen)
+
     # Main loop
     while True:
-
         # Wait for key or mouse button being pressed
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-
-        screen.fill(ai_settings.bg_color)
-
-        # Display last screen seen
-        pygame.display.flip()
+        gf.check_events()
+        gf.update_screen(ai_settings=ai_settings, screen=screen, ship=ship)
 
 
 if __name__ == "__main__":
