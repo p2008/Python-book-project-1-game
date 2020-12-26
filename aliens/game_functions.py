@@ -5,14 +5,54 @@ import sys
 
 import pygame
 
+from aliens.ship.base import BaseShip
 
-def check_events():
+
+def check_events(ship):
     """
     Events triggered by keyboard and mouse.
     """
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
+
+        elif event.type == pygame.KEYDOWN:
+            _check_keydown_events(event, ship)
+
+        elif event.type == pygame.KEYUP:
+            _check_keyup_events(event, ship)
+
+
+def _check_keydown_events(event, ship):
+    """
+    Events triggered by pressing a key.
+
+    :param event: pygame event object
+    :param ship: instance of Ship class
+    """
+    if event.key == pygame.K_RIGHT:
+        # Move ship right side
+        ship.moving_right = True
+
+    elif event.key == pygame.K_LEFT:
+        # Move ship left side
+        ship.moving_left = True
+
+
+def _check_keyup_events(event, ship):
+    """
+    Events triggered by releasing a key.
+
+    :param event: pygame event object
+    :param ship: instance of Ship class
+    """
+    if event.key == pygame.K_RIGHT:
+        # Cancel ship right side movement
+        ship.moving_right = False
+
+    elif event.key == pygame.K_LEFT:
+        # Cancel ship left side movement
+        ship.moving_left = False
 
 
 def update_screen(ai_settings, screen, ship):

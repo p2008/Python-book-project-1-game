@@ -21,7 +21,8 @@ def run_game():
     # Main loop
     while True:
         # Wait for key or mouse button being pressed
-        gf.check_events()
+        gf.check_events(ship=ship)
+        ship.update()
         gf.update_screen(ai_settings=ai_settings, screen=screen, ship=ship)
 
 
