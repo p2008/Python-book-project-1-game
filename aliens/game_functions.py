@@ -5,8 +5,6 @@ import sys
 
 import pygame
 
-from aliens.ship.base import BaseShip
-
 
 def check_events(ship):
     """
@@ -17,10 +15,10 @@ def check_events(ship):
             sys.exit()
 
         elif event.type == pygame.KEYDOWN:
-            _check_keydown_events(event, ship)
+            _check_keydown_events(event=event, ship=ship)
 
         elif event.type == pygame.KEYUP:
-            _check_keyup_events(event, ship)
+            _check_keyup_events(event=event, ship=ship)
 
 
 def _check_keydown_events(event, ship):
